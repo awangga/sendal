@@ -73,8 +73,18 @@ dokter=useraccount[kualitasdokter]
 positifdokter=dokter.tweet.str.contains('bagus|hebat|keren|puas|memuaskan|ramah|mudah|cepat')
 pdok=dokter[positifdokter]
 
-negatifdokter=dokter.tweet.str.contains('kecewa|jelek|kacau|bobrok|mengecewakan|sulit|lama|ribet')
+negatifdokter=dokter.tweet.str.contains('tidak empati|buru-buru|buru buru|tidak becus|malpraktek|malpraktik|tidak jelas|telat|kecewa|jelek|kacau|bobrok|mengecewakan|sulit|lama|ribet')
 ndok=dokter[negatifdokter]
+
+#kualitas obat
+kualitasobat=useraccount.tweet.str.contains('obat|Obat|apotek|apotik')
+obat=useraccount[kualitasobat]
+
+positifobat=obat.tweet.str.contains('bagus|hebat|murah|keren|puas|memuaskan|ramah|mudah|cepat')
+pobat=obat[positifobat]
+
+negatifobat=obat.tweet.str.contains('buruk|mahal|habis|tidak tepat')
+nobat=obat[negatifobat]
 
 #kualitas staf
 kualitasstaf=useraccount.tweet.str.contains('staf|perawat|pegawai|petugas')
@@ -83,7 +93,7 @@ staf=useraccount[kualitasstaf]
 positifstaf=staf.tweet.str.contains('bagus|hebat|keren|puas|memuaskan|ramah|mudah|cepat')
 pstaf=staf[positifstaf]
 
-negatifstaf=staf.tweet.str.contains('kecewa|jelek|kacau|bobrok|mengecewakan|sulit|lama|ribet')
+negatifstaf=staf.tweet.str.contains('kecewa|jelek|kacau|bobrok|mengecewakan|sulit|lama|ribet|tidak empati|tidak jelas')
 nstaf=staf[negatifstaf]
 
 #biaya/harga
