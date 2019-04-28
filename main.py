@@ -3,6 +3,8 @@ import csv
 import ast
 import pandas as pd
 
+# In[]
+
 c = twint.Config()
 c.Username = "bpjskesehatanri"
 c.Since="2018-12-01"
@@ -54,6 +56,22 @@ repliedtweets=df2[isonconv]
 repliedtweets.to_csv("userdes/repliedtweets.csv")
 
 
+# In[]
+data = pd.read_csv("bpjs/tweets.csv", sep=",", engine='python')
+# In[]
+positiftweet=data.tweet.str.contains('bagus|hebat|keren|puas|memuaskan|ramah|mudah|cepat|murah|terjangkau')
+negatiftweet=data.tweet.str.contains('buruk|mahal|habis|tidak tepat|tidak empati|buru-buru|buru buru|tidak becus|malpraktek|malpraktik|tidak jelas|telat|kecewa|jelek|kacau|bobrok|mengecewakan|sulit|lama|ribet')
+
+# In[]
+p=data[positiftweet]
+n=data[negatiftweet]
+
+# In[]
+p.to_excel (r'dataakhir/positif.xlsx', index = None, header=True) 
+n.to_excel (r'dataakhir/negatif.xlsx', index = None, header=True) 
+data.to_excel (r'dataakhir/semua.xlsx', index = None, header=True) 
+
+# In[]
 #read mention bpjskesehatanri on december
 mentiondf = pd.read_csv("mentionbpjsdes/tweets.csv", sep=",", engine='python')
 isrepliedby=mentiondf.conversation_id.isin(df1.conversation_id)
